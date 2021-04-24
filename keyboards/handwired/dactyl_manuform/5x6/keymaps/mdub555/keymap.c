@@ -2,13 +2,12 @@
 
 #include QMK_KEYBOARD_H
 
-#define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _GAMING 3
-
-#define RAISE MO(_RAISE)
-#define LOWER MO(_LOWER)
+enum my_layers {
+    _QWERTY,
+    _NUMPAD,
+    _MOVEMENT,
+    _GAMING
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_5x6(
@@ -22,7 +21,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         TT(1)  , TT(2) ,          TT(3)  , KC_DEL
     ),
 
-    [_LOWER] = LAYOUT_5x6(
+    [_NUMPAD] = LAYOUT_5x6(
         KC_TILD,KC_EXLM, KC_AT ,KC_HASH, KC_DLR,KC_PERC,          KC_CIRC,KC_AMPR,KC_PAST,KC_LPRN,KC_RPRN,KC_NLCK,
         XXXXXXX,XXXXXXX,XXXXXXX,KC_UNDS,KC_PIPE,KC_LBRC,          KC_RBRC, KC_P7 , KC_P8 , KC_P9 ,KC_PMNS,KC_PSLS,
         XXXXXXX,KC_HOME,KC_PGUP,KC_PGDN, KC_END,KC_LPRN,          KC_RPRN, KC_P4 , KC_P5 , KC_P6 ,KC_PPLS,KC_PAST,
@@ -33,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______,_______,          _______,_______
     ),
 
-    [_RAISE] = LAYOUT_5x6(
+    [_MOVEMENT] = LAYOUT_5x6(
         KC_F12 , KC_F1 , KC_F2 , KC_F3 , KC_F4 , KC_F5 ,          KC_F6  , KC_F7 , KC_F8 , KC_F9 , KC_F10, KC_F11,
         XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,KC_MUTE,          XXXXXXX,KC_MS_L,KC_MS_D,KC_MS_U,KC_MS_R,XXXXXXX,
         XXXXXXX,KC_BRIU,KC_MPRV,KC_MPLY,KC_MNXT,KC_VOLU,          XXXXXXX,KC_LEFT,KC_DOWN, KC_UP ,KC_RGHT,XXXXXXX,
